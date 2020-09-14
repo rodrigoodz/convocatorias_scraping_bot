@@ -37,7 +37,7 @@ const doScraping = async () => {
       setDB(nro_max);
     } else {
       console.log("No hay nada nuevo para notificar");
-      // notificarEnPrivado(`No hay nada nuevo para notificar `);
+      notificarEnPrivado(`No hay nada nuevo para notificar `);
     }
 
     await browser.close();
