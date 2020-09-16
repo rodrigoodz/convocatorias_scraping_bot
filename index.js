@@ -18,7 +18,8 @@ app.listen(port, function () {
 //todos los dias a las 12, comprueba si hay algo nuevo
 setInterval(() => {
   let date = new Date();
-  if (date.getUTCHours() - 3 === 12 && date.getUTCMinutes() === 00) {
+  //hours-3 debido a que Heroku tiene hora utc
+  if (date.getHours() - 3 === 12 && date.getMinutes() === 00) {
     doScraping();
   }
 }, 60000);
