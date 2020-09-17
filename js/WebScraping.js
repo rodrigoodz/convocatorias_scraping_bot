@@ -10,7 +10,9 @@ const doScraping = async () => {
 
   try {
     //entramos a la pagina mediante puppeteer
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
     const response = await page.goto(
       "http://fich.unl.edu.ar/pagina/convocatorias-rentadas/518/"
