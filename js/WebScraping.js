@@ -51,7 +51,16 @@ const doScraping = async () => {
       notificarEnPrivado(`No hay nada nuevo para notificar `);
     } else {
       console.log("Hay algo para notificar");
-      notificarEnPrivado(contenido.textContent);
+      conv_nuevas.forEach((d, idx) => {
+        // busco cual de las conv_nuevas no estaba antes y la muestro
+        if (!conv_guardadas.includes(d)) {
+          console.log(d, idx + 1);
+          notificarEnPrivado(
+            "Convocatoria " +
+              contenido.textContent.split("Convocatoria ")[idx + 1]
+          );
+        }
+      });
     }
 
     // actualizo lo guardado en firebase con lo nuevo
