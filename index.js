@@ -9,13 +9,14 @@ const app = express();
 //server
 app.get("/", function (req, res) {
   res.send(JSON.stringify({ Hola: "Mundo!" }));
+  // doScraping();
 });
 
 app.listen(port, function () {
   console.log(`Escuchando en puerto ${port}`);
 });
 
-//todos los dias a las 12, comprueba si hay algo nuevo
+// todos los dias a las 12, comprueba si hay algo nuevo
 setInterval(() => {
   let date = new Date();
   //hours-3 debido a que Heroku tiene hora utc

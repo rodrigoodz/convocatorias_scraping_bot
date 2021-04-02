@@ -1,38 +1,26 @@
-const fs = require("fs");
+const db = require("../firebase/config");
 
-let db = {};
-
-const saveDB = () => {
-  let data = JSON.stringify(db);
-
-  fs.writeFile("db/db.json", data, (err) => {
-    if (err) throw err;
-    console.log("El archivo ha sido guardado con exito!");
-  });
+const getConvocatoriasGuardadas = async () => {
+  let documentos = null;
+  await db
+    .collection("nros_convocatorias")
+    .get()
+    .then((snap) => {
+      snap.forEach((a) => {
+        documentos = a.data();
+      });
+    });
+  return documentos;
 };
 
-const loadDB = () => {
-  try {
-    db = require("../db/db.json");
-  } catch (error) {
-    db = {};
-  }
-};
-
-const getDB = () => {
-  loadDB();
-  return db;
-};
-
-const setDB = (nro) => {
-  db = {
-    nro_ultima_convocatoria: nro,
-  };
-  saveDB();
-  return;
+const setConvocatoriasGuardadas = async (convocatorias) => {
+  await db
+    .collection("nros_convocatorias")
+    .doc("JA9DDvvkPPAhWzLMiS4m")
+    .update({ convocatorias });
 };
 
 module.exports = {
-  getDB,
-  setDB,
+  getConvocatoriasGuardadas,
+  setConvocatoriasGuardadas,
 };
