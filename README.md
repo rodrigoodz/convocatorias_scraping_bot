@@ -11,3 +11,5 @@ PROJECT_ID={configuracion_firebase}<br>
 STORAGE_BUCKET={configuracion_firebase}<br>
 MESSAGING_SENDER_ID={configuracion_firebase}<br>
 APP_ID={configuracion_firebase}<br>
+
+<img src="./imagenes/screenshot01.jpg" width="300" height="600">
